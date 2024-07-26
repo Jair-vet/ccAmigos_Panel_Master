@@ -25,7 +25,7 @@ export class ListClientsComponent {
   id_pago: number = 0;
   modalWidth: string = '100%';
   clients: Client[] = [];
-  displayedColumns: string[] = ['box', 'name', 'edad', 'iglesia', 'email', 'telefono', 'status', 'instrumento', 'ruta_pago', 'fecha_registro', 'acciones'];
+  displayedColumns: string[] = ['box', 'name', 'edad', 'iglesia', 'email', 'telefono', 'instrumento', 'fecha_registro', 'ruta_pago', 'acciones', 'status',];
   @ViewChild(MatSort) sort!: MatSort;
 
   applyFilter(event: Event) {
@@ -202,13 +202,14 @@ export class ListClientsComponent {
   }
 
   openModal(cliente: Client) {
-    console.log(cliente);
+    // console.log(cliente);
     
     const dialogRef = this.dialog.open(ModalComponent, {
       width: '600px',
       data: { 
         imageUrl:  cliente.ruta_pago,
         nombre: cliente.nombre,
+        id: cliente.id
       }
     });
 

@@ -114,7 +114,7 @@
             </td>
           </ng-container>
           <!-- Estatus -->
-          <ng-container matColumnDef="status">
+          <!-- <ng-container matColumnDef="status">
             <th
               mat-header-cell
               class="primary"
@@ -144,7 +144,7 @@
                 >
               </a>
             </td>
-          </ng-container>
+          </ng-container> -->
           <!-- Instrumento -->
           <ng-container  matColumnDef="instrumento">
             <th
@@ -167,7 +167,7 @@
               *matHeaderCellDef
               mat-sort-header="ruta_pago"
             >
-              Pago
+              Ver Pago
             </th>
             <td mat-cell *matCellDef="let item" style="width: 30%">
               <button class="boton_pago" mat-button (click)="openModal(item)">Pago</button>
@@ -196,13 +196,9 @@
               *matHeaderCellDef
               mat-sort-header="acciones"
             >
-              Acciones
+              Estatus Pago
             </th>
             <td *matCellDef="let item" style="width: 30%">
-              <!-- <button class="btn btn-success" (click)="updateStatus('pagado')">Pagado</button>
-              <button class="btn btn-warning" (click)="updateStatus('pendiente')">Pendiente</button>
-              <button class="btn btn-danger" (click)="updateStatus('error-pago')">Pago Incorrecto</button> -->
-
               <!-- Botones estado del Pago -->
               <div class="buttons_pay">
                 <button
@@ -221,6 +217,36 @@
                 >
                 </button>
               </div>
+            </td>
+          </ng-container>
+          <!-- Estatus -->
+          <ng-container matColumnDef="status">
+            <th
+              mat-header-cell
+              class="primary"
+              *matHeaderCellDef
+              mat-sort-header="status"
+            >
+              Status
+            </th>
+
+            <td mat-cell *matCellDef="let item" style="width: 15%">
+              <a
+                *ngIf="item.estatus == 1"
+                class="btnAction"
+                (click)="changeStatusClient(false, item)"
+                style="color: var(--primary)"
+              >
+                <span class="status-icon checked"></span>
+              </a>
+              <a
+                *ngIf="item.estatus == 0"
+                class="btnAction"
+                (click)="changeStatusClient(true, item)"
+                style="color: var(--primary)"
+              >
+                <span class="status-icon unchecked"></span>
+              </a>
             </td>
           </ng-container>
         </table>

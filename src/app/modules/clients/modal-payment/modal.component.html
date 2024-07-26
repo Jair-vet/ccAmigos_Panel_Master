@@ -8,19 +8,19 @@
     <div>
       <button
           class="contenedor_boton_correcto" 
-          (click)="changeStatusPay(1)"
+          (click)="changeStatusPay(1, data.id)"
       >
       <p class="text_boton">Pago Correcto</p>
       </button>
       <button  
         class="contenedor_boton_pendiente"
-        (click)="changeStatusPay(2)"
+        (click)="changeStatusPay(2, data.id)"
         >
         <p class="text_boton">Pago Pendiente</p>
       </button>
       <button 
         class="contenedor_boton_error" 
-        (click)="changeStatusPay(3)"
+        (click)="changeStatusPay(3, data.id)"
       >
         <p class="text_boton">Pago Error</p>
       </button>

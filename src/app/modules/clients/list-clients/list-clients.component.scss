@@ -1,61 +1,87 @@
 .buttons_pay {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .pago_correcto {
     background-image: url('../../../../assets/img/2.png');
-    background-repeat:no-repeat;
-    height:50px;
-    width:50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-size: 45px 40px;
-    background-position:center;
-    border: none;
-    background-color: transparent;
-}
-.pago_correcto:hover {
-    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: 40px 40px; /* Tamaño de la imagen */
+    background-position: center;
+    height: 50px;
+    width: 50px;
+    border: none; /* Sin borde para evitar tapar las líneas de la tabla */
+    background-color: transparent; /* Fondo transparente */
+    display: inline-block; /* Comportamiento inline-block */
+    vertical-align: middle; /* Centrando verticalmente dentro de contenedores inline */
+    margin: 0 auto; /* Centrando el botón dentro de la celda de la tabla */
+    outline: none; /* Remover el outline para no tapar las líneas */
 }
 .pago_pendiente {
     background-image: url('../../../../assets/img/3.png');
-    background-repeat:no-repeat;
-    height:50px;
-    width:50px;
-    background-size: 45px 40px;
-    background-position:center;
-    border: none;
-    background-color: transparent;
-}
-.pago_pendiente:hover {
-    cursor: pointer;
-}
+    background-repeat: no-repeat;
+    background-size: 40px 40px;  /* Tamaño de la imagen */
+    background-position: center;
+    height: 50px;
+    width: 50px;
+    border: none; /* Sin borde para evitar tapar las líneas de la tabla */
+    background-color: transparent; /* Fondo transparente */
+    display: inline-block; /* Comportamiento inline-block */
+    vertical-align: middle; /* Centrando verticalmente dentro de contenedores inline */
+    margin: 0 auto; /* Centrando el botón dentro de la celda de la tabla */
+    outline: none; /* Remover el outline para no tapar las líneas */
+  }
 .pago_incorrecto {
     background-image: url('../../../../assets/img/1.png');
-    background-repeat:no-repeat;
-    height:50px;
-    width:50px;
-    background-size: 45px 40px;
-    background-position:center;
-    border: none;
-    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 40px 40px;  /* Tamaño de la imagen */
+    background-position: center;
+    height: 50px;
+    width: 50px;
+    border: none; /* Sin borde para evitar tapar las líneas de la tabla */
+    background-color: transparent; /* Fondo transparente */
+    display: inline-block; /* Comportamiento inline-block */
+    vertical-align: middle; /* Centrando verticalmente dentro de contenedores inline */
+    margin: 0 auto; /* Centrando el botón dentro de la celda de la tabla */
+    outline: none; /* Remover el outline para no tapar las líneas */
 }
-.pago_incorrecto:hover {
-    cursor: pointer;
-}
-
-button  {
-    background-color: transparent;
-}
-
 .boton_pago {
+    cursor: pointer;
+    background-color: rgb(59, 177, 59);
+    color: #ffffff !important;
+    width: 30px;
+    height: 25px;
+    border-radius: 5px;
+    text-transform: uppercase;
+  }
+.mat-cell .boton_pago {
     cursor: pointer;
     background-color: rgb(59, 177, 59);
     color: #ffffff;
     width: 30px;
-    height: 20px;
-    border-radius: 10px;
+    height: 25px;
+    border-radius: 5px;
     text-transform: uppercase;
+}
+
+/* Contenedor del ícono de estado */
+.status-icon {
+    display: inline-block;
+    width: 24px; /* Ajusta el tamaño según tus necesidades */
+    height: 24px; /* Ajusta el tamaño según tus necesidades */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  /* Ícono para el estado 'checked' */
+  .status-icon.checked {
+    background-image: url('../../../../assets/img/5.png'); /* Ruta a la imagen de fondo para el estado 'checked' */
+  }
+  
+  /* Ícono para el estado 'unchecked' */
+  .status-icon.unchecked {
+    background-image: url('../../../../assets/img/5.png'); /* Ruta a la imagen de fondo para el estado 'unchecked' */
 }

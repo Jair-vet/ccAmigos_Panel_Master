@@ -41,8 +41,8 @@ export class ModalComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  changeStatusPay(id_pago: number): void {
-    console.log(`Cambiando estatus a ${id_pago} para el cliente con id ${this.data.id}`);
+  changeStatusPay(id_pago: number,  id_cliente: number): void {
+    // console.log(`Cambiando estatus a ${id_pago} para el cliente con id ${id_cliente}`);
 
     Swal.fire({
       title: 'Cambiar Estatus Pago',
@@ -56,7 +56,7 @@ export class ModalComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.loading = true;
-        this._clientService.changeStatusPay(this.data.id, id_pago).subscribe({
+        this._clientService.changeStatusPay(id_cliente, id_pago).subscribe({
           next: (resp) => {
             Swal.fire({
               title: 'OK',
@@ -64,6 +64,9 @@ export class ModalComponent {
               icon: 'success',
               confirmButtonColor: '#58B1F7',
               heightAuto: false,
+            }).then(() => {
+              // Recargar la página después de cerrar el cuadro de diálogo
+              window.location.reload();
             });
           },
           complete: () => {
