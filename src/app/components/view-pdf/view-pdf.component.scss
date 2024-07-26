@@ -1,0 +1,8 @@
+.card-content {
+    display: flex;
+    justify-content: center;
+    max-height: 500px;
+    /* Altura máxima del contenido del diálogo */
+    overflow-y: auto;
+    /* Permite el scroll vertical si el contenido es más largo que la altura máxima */
+}

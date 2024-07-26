@@ -1,0 +1,27 @@
+<div class="song-play">
+  <audio controls #song style="display: none">
+    <source [src]="path_song" />
+  </audio>
+  <input
+    type="range"
+    value="0"
+    id="progress"
+    #progress
+    (change)="onProgressChange()"
+  />
+  <span class="name-song">{{ name }}</span>
+  <div class="controls">
+    <div class="btn-play">
+      <mat-icon (click)="previuosSong()">skip_previous</mat-icon>
+    </div>
+    <div class="btn-play">
+      <mat-icon *ngIf="!isPlaying" (click)="playPause(false)"
+        >play_arrow</mat-icon
+      >
+      <mat-icon *ngIf="isPlaying" (click)="playPause(false)">stop</mat-icon>
+    </div>
+    <div class="btn-play">
+      <mat-icon (click)="nextSong()">skip_next</mat-icon>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="body">
+  <div class="container-auth">
+    <div class="screen" *ngIf="!loading">
+      <div class="screen__content">
+        <img
+          src="https://sgp-web.nyc3.cdn.digitaloceanspaces.com/Musicaly_Test/assets/musicaly-logo.png"
+          class="logo"
+          width="150px"
+          alt=""
+        />
+
+        <form class="login" [formGroup]="form">
+          
+          <!-- Name -->
+          <mat-form-field
+            class="login__field"
+            appearance="outline"
+            floatLabel="always"
+          >
+            <mat-label>Nombre Usuario</mat-label>
+            <input matInput placeholder="" value="" formControlName="name" />
+          </mat-form-field>
+          <!-- Correo Electronico -->
+          <mat-form-field
+            class="login__field"
+            appearance="outline"
+            floatLabel="always"
+          >
+            <mat-label>CORREO ELECTRONICO</mat-label>
+            <input matInput placeholder="" value="" formControlName="email" />
+          </mat-form-field>
+          <!-- Password -->
+          <mat-form-field
+            class="login__field"
+            appearance="outline"
+            floatLabel="always"
+          >
+            <mat-label>CONTRASEÑA</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              [type]="hide ? 'password' : 'text'"
+            />
+          </mat-form-field>
+
+          <button class="button login__submit" (click)="register()">
+            <span class="button__text">Registrarse</span>
+          </button>
+
+          <button (click)="navigateToLogin()">
+            <span class="button_text">Login</span>
+          </button>
+          
+        </form>
+      </div>
+    </div>
+    <div class="screen" *ngIf="loading">
+      <app-loading></app-loading>
+    </div>
+  </div>
+</div>

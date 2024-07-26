@@ -1,0 +1,51 @@
+.buttons_pay {
+    display: flex;
+    flex-direction: row;
+}
+
+.pago_correcto {
+    background-image: url('../../../../assets/img/2.png');
+    background-repeat:no-repeat;
+    height:50px;
+    width:50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 45px 40px;
+    background-position:center;
+    border: none;
+    background-color: transparent;
+}
+.pago_correcto:hover {
+    cursor: pointer;
+}
+.pago_pendiente {
+    background-image: url('../../../../assets/img/3.png');
+    background-repeat:no-repeat;
+    height:50px;
+    width:50px;
+    background-size: 45px 40px;
+    background-position:center;
+    border: none;
+    background-color: transparent;
+}
+.pago_pendiente:hover {
+    cursor: pointer;
+}
+.pago_incorrecto {
+    background-image: url('../../../../assets/img/1.png');
+    background-repeat:no-repeat;
+    height:50px;
+    width:50px;
+    background-size: 45px 40px;
+    background-position:center;
+    border: none;
+    background-color: transparent;
+}
+.pago_incorrecto:hover {
+    cursor: pointer;
+}
+
+button  {
+    background-color: transparent;
+}

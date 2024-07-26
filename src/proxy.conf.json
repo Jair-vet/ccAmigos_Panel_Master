@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://sgp-web.nyc3.cdn.digitaloceanspaces.com",
+    "secure": true,
+    "changeOrigin": false
+  }
+}

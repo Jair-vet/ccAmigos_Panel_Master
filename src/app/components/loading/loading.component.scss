@@ -1,0 +1,23 @@
+.container-loading{
+    padding: 15px;
+    display: flex;
+    height: 100%;
+    background-color: white;
+    flex-direction: column !important;
+    justify-content: center!important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+.loading{
+    height: 50px;
+    width: 50px;
+    font-size: 20px;
+    display: flex; justify-content: center; align-items: center;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 50%;
+    margin-right: 5px;
+    animation: rotateAnimation 2s linear infinite; 
+}
+

@@ -1,0 +1,19 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav-content class="primary">
+    <mat-toolbar
+      class="primary"
+      style="position: sticky; top: 0; z-index: 1000; height: 70px"
+    >
+
+      <div class="item-spacer">
+        <h2>Bienvenido: <span class="user_name">{{user.name}}</span></h2>
+      </div>
+      <button type="button" class="button_exit" mat-icon-button (click)="logout()">
+        <mat-icon class="custom-size-animation">logout</mat-icon>
+      </button>
+    </mat-toolbar>
+    <div style="z-index: -10">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

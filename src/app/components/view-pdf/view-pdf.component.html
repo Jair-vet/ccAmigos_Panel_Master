@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header class="secondary header-modal">
+    <div class="item-spacer"></div>
+    <mat-icon>picture_as_pdf</mat-icon>
+    <span> PDF </span>
+    <div class="item-spacer"></div>
+    <span class="icon-close-modal" (click)="closeDialog()">&#10008;</span>
+  </mat-card-header>
+
+  <mat-card-content *ngIf="!loading">
+    <ngx-extended-pdf-viewer
+      [base64Src]="data"
+      [height]="'auto'"
+      [useBrowserLocale]="true"
+      [showHandToolButton]="false"
+    >
+    </ngx-extended-pdf-viewer>
+  </mat-card-content>
+  <app-loading
+    diameter="50"
+    *ngIf="loading"
+    class="spinner secondary"
+  ></app-loading>
+</mat-card>
