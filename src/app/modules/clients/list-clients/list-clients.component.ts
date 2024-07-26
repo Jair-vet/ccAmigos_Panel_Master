@@ -7,8 +7,8 @@ import { ClientService } from 'src/app/services/client.sevice';
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
 import { Instrument } from 'src/app/models/instrument.models';
-import { ActivatedRoute } from '@angular/router';
-
+import { ModalComponent } from '../modal-payment/modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-clients',
@@ -36,6 +36,7 @@ export class ListClientsComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private _clientService: ClientService,
+    public dialog: MatDialog
   ) {
     this.breakpointObserver
       .observe([
@@ -200,6 +201,21 @@ export class ListClientsComponent {
     });
   }
 
+  openModal(cliente: Client) {
+    console.log(cliente);
+    
+    const dialogRef = this.dialog.open(ModalComponent, {
+      width: '600px',
+      data: { 
+        imageUrl:  cliente.ruta_pago,
+        nombre: cliente.nombre,
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('El modal fue cerrado');
+    });
+  }
 
   ngOnInit() {
     this.loadData();

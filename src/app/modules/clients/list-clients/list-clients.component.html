@@ -170,7 +170,8 @@
               Pago
             </th>
             <td mat-cell *matCellDef="let item" style="width: 30%">
-              <a href="https://sgp-web.nyc3.cdn.digitaloceanspaces.com/CCAmigos/Clientes/{{item.ruta_pago}}" target="_blank">{{ item.ruta_pago }}</a>
+              <button class="boton_pago" mat-button (click)="openModal(item)">Pago</button>
+              <!-- <a href="https://sgp-web.nyc3.cdn.digitaloceanspaces.com/CCAmigos/Clientes/{{item.ruta_pago}}" target="_blank">{{ item.ruta_pago }}</a> -->
             </td>
           </ng-container>
           <!-- Fecha de Registro -->
@@ -207,19 +208,16 @@
                 <button
                   *ngIf="item.id_pago == 1" 
                   class="pago_correcto" 
-                  (click)="changeStatusPay(1, item)"
                 >
                 </button>
                 <button 
                   *ngIf="item.id_pago == 2" 
                   class="pago_pendiente"  
-                  (click)="changeStatusPay(2, item)"
                 >
                 </button>
                 <button 
                   *ngIf="item.id_pago == 3" 
                   class="pago_incorrecto" 
-                  (click)="changeStatusPay(3, item)"
                 >
                 </button>
               </div>

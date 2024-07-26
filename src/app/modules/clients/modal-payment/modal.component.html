@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Modal Title</h2>
+<mat-dialog-content>
+  <p>Informacion del Pago de: <span>{{data.nombre}}</span></p>
+  <img [src]="'https://sgp-web.nyc3.cdn.digitaloceanspaces.com/CCAmigos/Clientes/'+data.imageUrl" alt="Imagen del ítem" style="max-width: 100%;">
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="contenedor_botones">
+    <div>
+      <button
+          class="contenedor_boton_correcto" 
+          (click)="changeStatusPay(1)"
+      >
+      <p class="text_boton">Pago Correcto</p>
+      </button>
+      <button  
+        class="contenedor_boton_pendiente"
+        (click)="changeStatusPay(2)"
+        >
+        <p class="text_boton">Pago Pendiente</p>
+      </button>
+      <button 
+        class="contenedor_boton_error" 
+        (click)="changeStatusPay(3)"
+      >
+        <p class="text_boton">Pago Error</p>
+      </button>
+    </div>
+  </div>
+</mat-dialog-actions> 

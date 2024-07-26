@@ -49,3 +49,13 @@
 button  {
     background-color: transparent;
 }
+
+.boton_pago {
+    cursor: pointer;
+    background-color: rgb(59, 177, 59);
+    color: #ffffff;
+    width: 30px;
+    height: 20px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}

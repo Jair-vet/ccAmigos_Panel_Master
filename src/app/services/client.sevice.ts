@@ -10,6 +10,7 @@ const base_url = environment.base_url;
   providedIn: 'root',
 })
 export class ClientService {
+  showModal = false;
   constructor(private http: HttpClient) {}
 //   get token(): string {
 //     return (
