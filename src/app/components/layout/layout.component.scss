@@ -203,3 +203,27 @@
         margin-left: 0.5vh;
     }
 }
+
+
+.button_add {
+    display: flex;
+    align-items: center;   /* Centra verticalmente */
+    justify-content: center;  /* Centra horizontalmente */
+    width: 150px;  /* Ajusta según sea necesario */
+    height: 30px; 
+    margin: 3px 1px 5px 1px;
+    background-color: rgb(11, 11, 198);
+    color: white;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.button_add p {
+    margin: 0;
+}
+
+.button_add:hover {
+    background-color: rgb(15, 15, 143);
+}

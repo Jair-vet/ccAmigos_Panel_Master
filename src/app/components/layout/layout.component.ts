@@ -67,6 +67,10 @@ export class LayoutComponent {
     this._router.navigateByUrl(route);
   }
   
+  navigateToRegister() {
+    this._router.navigateByUrl('auth/register');
+  }
+  
   logout() {
     Swal.fire({
       title: 'Salir',

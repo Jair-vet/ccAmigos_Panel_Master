@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './modules/clients/modal-payment/modal.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [AppComponent, ModalComponent],
@@ -15,7 +16,8 @@ import { ModalComponent } from './modules/clients/modal-payment/modal.component'
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

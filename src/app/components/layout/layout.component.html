@@ -8,9 +8,15 @@
       <div class="item-spacer">
         <h2>Bienvenido: <span class="user_name">{{user.name}}</span></h2>
       </div>
+      
+      <button type="button" class="button_add" (click)="navigateToRegister()">
+        <p>Agregar Usuario</p>
+      </button>
+      
       <button type="button" class="button_exit" mat-icon-button (click)="logout()">
         <mat-icon class="custom-size-animation">logout</mat-icon>
       </button>
+
     </mat-toolbar>
     <div style="z-index: -10">
       <router-outlet></router-outlet>

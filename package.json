@@ -22,8 +22,9 @@
     "@angular/router": "^16.2.0",
     "ng2-pdf-viewer": "^9.1.5",
     "ngx-extended-pdf-viewer": "^17.4.3",
+    "ngx-spinner": "^17.0.0",
     "rxjs": "~7.8.0",
-    "sweetalert2": "^11.10.8",
+    "sweetalert2": "^11.6.13",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },

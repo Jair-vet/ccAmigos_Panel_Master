@@ -13,6 +13,8 @@ export class Client {
       public id_pago: number,
       public id_evento_url: string,
       public ruta_pago: string,
+      public status: number,
+      public selected: boolean,
     ) {}
 }
   
