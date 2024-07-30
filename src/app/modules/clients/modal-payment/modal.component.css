@@ -7,7 +7,16 @@
     justify-content: center;
     align-items: center;
 }
-
+@media (max-width: 768px) {  
+    .botones {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+    }
+}
 .contenedor_boton_correcto {
     width: 150px;
     height: 40px;
@@ -62,6 +71,6 @@
     cursor: pointer;
 }
 
-button  {
-    background-color: transparent;
+button .contenedor_boton_correcto {
+    margin: 0;
 }

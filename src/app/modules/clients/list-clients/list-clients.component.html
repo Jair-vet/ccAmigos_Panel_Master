@@ -178,23 +178,26 @@
               <div class="buttons_pay">
                 <button
                   *ngIf="item.id_pago == 1" 
-                  class="pago_correcto" 
+                  class="pago_pendiente" 
+                  matTooltip="Pago Pendiente"
                 >
                 </button>
                 <button 
                   *ngIf="item.id_pago == 2" 
-                  class="pago_pendiente"  
+                  class="pago_correcto"  
+                  matTooltip="Pago Correcto"
                 >
                 </button>
                 <button 
                   *ngIf="item.id_pago == 3" 
-                  class="pago_incorrecto" 
+                  class="pago_incorrecto"
+                  matTooltip="Pago Incorrecto" 
                 >
                 </button>
               </div>
             </td>
           </ng-container>
-          <!-- Estatus -->
+          <!-- Eliminar Usuario -->
           <ng-container matColumnDef="status">
             <th
               mat-header-cell

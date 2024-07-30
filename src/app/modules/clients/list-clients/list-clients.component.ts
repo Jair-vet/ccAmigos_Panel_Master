@@ -328,7 +328,8 @@ export class ListClientsComponent {
     // console.log(cliente);
     
     const dialogRef = this.dialog.open(ModalComponent, {
-      width: '600px',
+      width: '500px',  // Ancho del modal
+      height: '400px',  // Alto del modal
       data: { 
         imageUrl:  cliente.ruta_pago,
         nombre: cliente.nombre,
@@ -343,7 +344,7 @@ export class ListClientsComponent {
 
   ngOnInit() {
     this.loadData();
-    this.calculateTotalPayment();
+    // this.calculateTotalPayment();
   }
 }
 

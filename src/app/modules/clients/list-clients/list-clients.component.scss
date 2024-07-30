@@ -18,6 +18,7 @@
     vertical-align: middle; /* Centrando verticalmente dentro de contenedores inline */
     margin: 0 auto; /* Centrando el botón dentro de la celda de la tabla */
     outline: none; /* Remover el outline para no tapar las líneas */
+    cursor: pointer;
 }
 .pago_pendiente {
     background-image: url('../../../../assets/img/3.png');
@@ -32,6 +33,7 @@
     vertical-align: middle; /* Centrando verticalmente dentro de contenedores inline */
     margin: 0 auto; /* Centrando el botón dentro de la celda de la tabla */
     outline: none; /* Remover el outline para no tapar las líneas */
+    cursor: pointer;
   }
 .pago_incorrecto {
     background-image: url('../../../../assets/img/1.png');
@@ -46,6 +48,7 @@
     vertical-align: middle; /* Centrando verticalmente dentro de contenedores inline */
     margin: 0 auto; /* Centrando el botón dentro de la celda de la tabla */
     outline: none; /* Remover el outline para no tapar las líneas */
+    cursor: pointer;
 }
 .boton_pago {
     cursor: pointer;
@@ -94,6 +97,14 @@
   border-radius: 5px;
   cursor: pointer;
   text-transform: uppercase;
+  margin-top: 10px;
+  margin-right: 5px;
+}
+.button_update{
+  margin-top: 10px;
+}
+.button_delete{
+  margin-top: 10px;
 }
 
 .button_export:hover {
@@ -102,7 +113,9 @@
 .contenedor_botones{
   display: flex;
   gap: 4px;
-  justify-content: flex-end
+  flex-direction: row;
+  justify-content: flex-end;
+  align-content: flex-end;
 }
 
 @media (max-width: 768px) {  
