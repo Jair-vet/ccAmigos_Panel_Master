@@ -156,7 +156,7 @@ export class ListClientsComponent {
       .filter(client => client.selected)  // Filtra los usuarios seleccionados
       .map(user => user.id);          // Extrae solo los IDs
 
-    console.log(ids);
+    // console.log(ids);
     if (ids.length > 0) {
       Swal.fire({
         title: 'Confirmación',
@@ -198,17 +198,60 @@ export class ListClientsComponent {
     }
   }
 
+  deleteAllUsers() {
+    const ids = this.dataSource.data
+      .filter(client => client.selected)
+      .map(user => user.id);
+
+    if (ids.length > 0) {
+      Swal.fire({
+        title: 'Confirmación',
+        text: `¿Estás seguro de que quieres eliminar los usuarios seleccionados?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.spinner.show();
+          this.http.put('http://localhost:4002/api/register/estatus/delete/all', { ids: ids })
+            .subscribe(response => {
+              this.spinner.hide();
+              Swal.fire(
+                'Eliminado',
+                `Los usuarios seleccionados han sido eliminados.`,
+                'success'
+              ).then(() => {
+                location.reload();  // Recarga la página después de darle OK en Swal
+              });
+              this.clearSelection();
+            }, error => {
+              this.spinner.hide();
+              Swal.fire(
+                'Error',
+                'Hubo un problema al eliminar los usuarios.',
+                'error'
+              );
+            });
+        }
+      });
+    } else {
+      Swal.fire(
+        'Sin selección',
+        'No hay usuarios seleccionados para eliminar.',
+        'info'
+      );
+    }
+  }
+
 
   updateAllStatus() {
     const selectedUsers = this.dataSource.data.filter(client => client.selected);
     selectedUsers.forEach(client => this.updateStatus(client));
   }
 
-  // updateAllPaymentId() {
-  //   let id_cliente = cliente.id
-  //   const selectedUsers = this.dataSource.data.filter(user => user.selected);
-  //   selectedUsers.forEach(user => this.updatePaymentId(Client.id));
-  // }
 
   changeStatusClient(status: boolean, client: Client) {
     console.log(client.id);

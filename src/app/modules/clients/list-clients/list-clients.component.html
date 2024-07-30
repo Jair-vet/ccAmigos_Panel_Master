@@ -27,7 +27,7 @@
     <div class="mat-elevation-z8">
       <div class="contenedor_botones">
           <button class="button_update" mat-raised-button color="primary" (click)="updateAllStatus()">Cambiar Pagado</button>
-          <button class="button_delete" mat-raised-button color="accent" >Eliminar Usuarios</button>
+          <button class="button_delete" mat-raised-button color="accent" (click)="deleteAllUsers()">Eliminar Usuarios</button>
           <button type="button" class="button_export" (click)="exportToExcel()">Exportar a Excel</button>
       </div>
       <div class="table-container-big">
