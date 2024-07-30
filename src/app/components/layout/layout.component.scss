@@ -227,3 +227,17 @@
 .button_add:hover {
     background-color: rgb(15, 15, 143);
 }
+
+.button_export {
+    /* Tus estilos aquí */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button_export:hover {
+    background-color: #0056b3;
+  }

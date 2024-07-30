@@ -85,3 +85,40 @@
   .status-icon.unchecked {
     background-image: url('../../../../assets/img/5.png'); /* Ruta a la imagen de fondo para el estado 'unchecked' */
 }
+
+.button_export {
+  padding: 8.3px 10px;
+  background-color: #4cca11;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.button_export:hover {
+  background-color: #18b300;
+}
+.contenedor_botones{
+  display: flex;
+  gap: 4px;
+  justify-content: flex-end
+}
+
+@media (max-width: 768px) {  
+  .contenedor_botones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  } 
+  .button_export{
+    width: 70%;
+  }
+  .button_update{
+    width: 70%;
+  }
+  .button_delete{
+    width: 70%;
+  }
+}
