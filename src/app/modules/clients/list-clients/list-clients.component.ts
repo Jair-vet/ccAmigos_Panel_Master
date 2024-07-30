@@ -254,7 +254,7 @@ export class ListClientsComponent {
 
 
   changeStatusClient(status: boolean, client: Client) {
-    console.log(client.id);
+    // console.log(client.id);
     
     Swal.fire({
       title: status ? 'Eliminar' : 'Desactivar',
@@ -300,7 +300,7 @@ export class ListClientsComponent {
   }
 
   changeStatusPay(id_pago: Number, cliente: Client) {
-    console.log(cliente);
+    // console.log(cliente);
     
     console.log(id_pago, cliente.id);
     let id_cliente = cliente.id
