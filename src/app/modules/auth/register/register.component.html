@@ -2,12 +2,8 @@
   <div class="container-auth">
     <div class="screen" *ngIf="!loading">
       <div class="screen__content">
-        <img
-          src="https://sgp-web.nyc3.cdn.digitaloceanspaces.com/Musicaly_Test/assets/musicaly-logo.png"
-          class="logo"
-          width="150px"
-          alt=""
-        />
+        <img src="https://res.cloudinary.com/dytlbyofu/image/upload/v1722354689/Trabajo/logo-amigos_avegun.png" class="logo"
+          width="100px" alt="" />
 
         <form class="login" [formGroup]="form">
           
@@ -43,7 +39,7 @@
             />
           </mat-form-field>
 
-          <button class="button login__submit" (click)="register()">
+          <button class="button register__submit" (click)="register()">
             <span class="button__text">Registrarse</span>
           </button>
 

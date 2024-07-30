@@ -28,11 +28,11 @@ export class ListClientsComponent {
   colBig: number = 12;
   colMedium: number = 12;
   colSmall: number = 12;
-  // id_cliente: number = 0;
+  totalPayment: number = 0;
   id_pago: number = 0;
   modalWidth: string = '100%';
   clients: Client[] = [];
-  displayedColumns: string[] = ['box', 'name', 'edad', 'iglesia', 'email', 'telefono', 'instrumento', 'fecha_registro', 'ruta_pago', 'acciones', 'status',];
+  displayedColumns: string[] = ['box', 'name', 'edad', 'iglesia', 'email', 'telefono', 'instrumento', 'fecha_registro', 'ruta_pago', 'acciones', 'status'];
   @ViewChild(MatSort) sort!: MatSort;
 
   applyFilter(event: Event) {
@@ -102,30 +102,52 @@ export class ListClientsComponent {
 
   exportToExcel() {
     this.spinner.show();
-    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.dataSource.data);
+    // Create a new array including the total payment column
+    const dataToExport = this.dataSource.data.map(client => ({
+      ...client,
+      total_pago: client.id_pago === 2 ? 300 : 0
+    }));
+    // Calculate the total payment sum
+    const totalSum = dataToExport.reduce((sum, client) => sum + (client.id_pago === 2 ? 300 : 0), 0);
+    // Create a worksheet from the data
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(dataToExport);
+    // Append the total sum at the end
+    XLSX.utils.sheet_add_aoa(worksheet, [['', 'TOTAL_PAGO', totalSum, '', '', '', '', '', '', '', '']], { origin: -1 });
+    // Create a workbook
     const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+    // Generate the Excel file
     const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    // Save the file
     this.saveAsExcelFile(excelBuffer, 'clients');
     this.spinner.hide();
   }
 
   private saveAsExcelFile(buffer: any, fileName: string): void {
-    const data: Blob = new Blob([buffer], {type: EXCEL_TYPE});
+    const data: Blob = new Blob([buffer], { type: EXCEL_TYPE });
     saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
   }
 
   selectAll(event: any) {
     this.isAllSelected = event.target.checked;
     this.dataSource.data.forEach(user => user.selected = this.isAllSelected);
+    this.calculateTotalPayment();
   }
 
   checkIfAllSelected() {
     this.isAllSelected = this.dataSource.data.every(user => user.selected);
+    this.calculateTotalPayment();
   }
 
   clearSelection() {
     this.dataSource.data.forEach(user => user.selected = false);
     this.isAllSelected = false;
+    this.calculateTotalPayment();
+  }
+  
+  calculateTotalPayment() {
+    this.totalPayment = this.dataSource.data
+      .filter(client => client.id_pago === 2)
+      .reduce((sum, client) => sum + 300, 0);
   }
 
   updateStatus(client: Client) {
@@ -321,6 +343,7 @@ export class ListClientsComponent {
 
   ngOnInit() {
     this.loadData();
+    this.calculateTotalPayment();
   }
 }
 
