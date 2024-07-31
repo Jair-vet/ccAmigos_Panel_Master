@@ -40,12 +40,20 @@ export class ClientService {
   // http://localhost:4002/api/register/estatus/pay/1
   changeStatusPay(id_cliente: number, id_pago: number) {
     const url = `${base_url}/${this.path}/estatus/pay/${id_cliente}`;
-    console.log(id_cliente, id_pago);
+    // console.log(id_cliente, id_pago);
     return this.http
       .put(url, { id_pago }, this.headers)
       .pipe(map((resp: any) => resp.message));
   }
 
+  // ForAll
+  // http://localhost:4002/api/register/estatus/pay/all
+  changeStatusPayAll(id_cliente: number, ids: number[]) {
+    const url = `${base_url}/${this.path}/estatus/pay/all${id_cliente}`;
+    return this.http
+      .put(url, { ids })
+      .pipe(map((resp: any) => resp.message));
+  }
 
   getClientes() {
     const url = `${base_url}/${this.path}`;

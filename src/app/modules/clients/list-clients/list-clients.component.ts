@@ -150,6 +150,61 @@ export class ListClientsComponent {
       .reduce((sum, client) => sum + 300, 0);
   }
 
+  updateAllStatus() {
+    const selectedUsers = this.dataSource.data.filter(client => client.selected);
+    selectedUsers.forEach(client => this.updateStatus(client));
+  }
+
+//   updateStatus(client: Client) {
+//     
+//     const ids = this.dataSource.data
+//       .filter(client => client.selected)  // Filtra los usuarios seleccionados
+//       .map(user => user.id);          // Extrae solo los IDs
+// 
+//     // console.log(ids);
+//     if (ids.length > 0) {
+//       Swal.fire({
+//         title: 'Confirmación',
+//         text: `¿Estás seguro de que quieres actualizar el estado de los usuarios seleccionados?`,
+//         icon: 'warning',
+//         showCancelButton: true,
+//         confirmButtonColor: '#3085d6',
+//         cancelButtonColor: '#d33',
+//         confirmButtonText: 'Sí, actualizar',
+//         cancelButtonText: 'Cancelar'
+//       }).then((result) => {
+//         if (result.isConfirmed) {
+//           this.spinner.show();  // Mostrar el spinner
+//           try{
+//             this._clientService.changeStatusPayAll(client.id, ids)
+//             this.spinner.hide();  // Ocultar el spinner
+//             Swal.fire(
+//               'Actualizado',
+//               `Los estados de los usuarios seleccionados han sido actualizados.`,
+//               'success'
+//             ).then(() => {
+//               location.reload();  // Recarga la página después de darle OK en Swal
+//             });
+//             this.clearSelection();  // Limpiar selección
+//           } catch(error) {
+//             this.spinner.hide();  // Ocultar el spinner
+//             Swal.fire(
+//               'Error',
+//               'Hubo un problema al actualizar el estado.',
+//               'error'
+//             );
+//           }
+//         }
+//       });
+//     } else {
+//       Swal.fire(
+//         'Sin selección',
+//         'No hay usuarios seleccionados para actualizar.',
+//         'info'
+//       );
+//     }
+//   }
+
   updateStatus(client: Client) {
 
     const ids = this.dataSource.data
@@ -170,14 +225,16 @@ export class ListClientsComponent {
       }).then((result) => {
         if (result.isConfirmed) {
           this.spinner.show();  // Mostrar el spinner
-          this.http.put('http://localhost:4002/api/register/estatus/pay/all', { ids: ids })
+          this.http.put('http://localhost:4002/api/register/estatus/pay/clientAll', { ids: ids })
           .subscribe(response => {
             this.spinner.hide();  // Ocultar el spinner
             Swal.fire(
               'Actualizado',
               `Los estados de los usuarios seleccionados han sido actualizados.`,
               'success'
-            );
+            ).then(() => {
+              location.reload();  // Recarga la página después de darle OK en Swal
+            });
             this.clearSelection();  // Limpiar selección
           }, error => {
             this.spinner.hide();  // Ocultar el spinner
@@ -247,11 +304,6 @@ export class ListClientsComponent {
   }
 
 
-  updateAllStatus() {
-    const selectedUsers = this.dataSource.data.filter(client => client.selected);
-    selectedUsers.forEach(client => this.updateStatus(client));
-  }
-
 
   changeStatusClient(status: boolean, client: Client) {
     // console.log(client.id);
@@ -279,6 +331,9 @@ export class ListClientsComponent {
                 icon: 'success',
                 confirmButtonColor: '#58B1F7',
                 heightAuto: false,
+              }).then(() => {
+                // Recargar la página después de cerrar el cuadro de diálogo
+                window.location.reload();
               });
             },
             complete: () => {
@@ -299,54 +354,6 @@ export class ListClientsComponent {
     });
   }
 
-  changeStatusPay(id_pago: Number, cliente: Client) {
-    // console.log(cliente);
-    
-    console.log(id_pago, cliente.id);
-    let id_cliente = cliente.id
-
-    Swal.fire({
-      title: 'Cambiar Estatus Pago',
-      text:
-        '¿Esta seguro de cambiar el Estatus del Pago' + '?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Ok',
-      cancelButtonText: 'Cancelar',
-      confirmButtonColor: '#58B1F7',
-      reverseButtons: true,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.loading = true;
-        this._clientService
-          .changeStatusPay(id_cliente, this.id_pago)
-          .subscribe({
-            next: (resp) => {
-              Swal.fire({
-                title: 'OK',
-                text: resp,
-                icon: 'success',
-                confirmButtonColor: '#58B1F7',
-                heightAuto: false,
-              });
-            },
-            complete: () => {
-              this.loadData();
-            },
-            error: (err) => {
-              console.log(err);
-              Swal.fire({
-                title: 'ERROR',
-                text: err.error.message,
-                icon: 'error',
-                confirmButtonColor: '#58B1F7',
-                heightAuto: false,
-              });
-            },
-          });
-      }
-    });
-  }
 
   loadData() {
     this.loading = true;
