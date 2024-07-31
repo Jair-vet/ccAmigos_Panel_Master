@@ -16,13 +16,22 @@ export class RegisterComponent {
   constructor(
     private _router: Router,
     private _authService: AuthService,
-    private _formBuider: FormBuilder
+    private _formBuider: FormBuilder,
+    private router: Router
   ) {
     this.form = this._formBuider.group({
       name: ['',Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
+  }
+  navigateToAdminClients(): void {
+    this.router.navigate(['/admin/clients']);
+  }
+  isLoggedIn(): boolean {
+    // Aquí iría la lógica para verificar si el usuario está logueado
+    // Puede ser una verificación de token, una variable en el local storage, etc.
+    return !!localStorage.getItem('token');
   }
 
   navigateToLogin() {

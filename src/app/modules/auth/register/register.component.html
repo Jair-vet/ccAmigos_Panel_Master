@@ -43,10 +43,15 @@
             <span class="button__text">Registrarse</span>
           </button>
 
-          <button (click)="navigateToLogin()">
-            <span class="button_text">Login</span>
-          </button>
-          
+          <div class="botones_registro">
+            <button (click)="navigateToLogin()">
+              <span class="button_text">Login</span>
+            </button>
+  
+            <button *ngIf="isLoggedIn()" (click)="navigateToAdminClients()">
+              <span class="button_text">Regresar Tabla</span>
+            </button>
+          </div>
         </form>
       </div>
     </div>

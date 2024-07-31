@@ -102,11 +102,16 @@
 }
 .button_update{
   margin-top: 10px;
+  text-transform: uppercase;
 }
 .button_delete{
   margin-top: 10px;
+  text-transform: uppercase;
 }
-
+.text_center {
+  text-align: center;
+  text-transform: uppercase;
+}
 .button_export:hover {
   background-color: #18b300;
 }
@@ -134,4 +139,12 @@
   .button_delete{
     width: 70%;
   }
+}
+
+.box_class{
+  width: -10%;
+  text-align: center;
+}
+.box-column {
+  width: 20px; /* O cualquier otro ancho que necesites */
 }
