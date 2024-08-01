@@ -31,6 +31,7 @@
     color: #ffffff;
 }
 .text_boton_correcto{
+    width: 100%;
     text-transform: uppercase;
     color: #3eab38;
 }
@@ -64,7 +65,8 @@
     background-color: #981212;
     color: #ffffff;
 }
-.text_boton_incorrecto{
+.text_boton_error{
+    width: 100%;
     text-transform: uppercase;
     color: #ab3838;
 }
@@ -80,6 +82,20 @@
 }
 .pago_incorrecto:hover {
     cursor: pointer;
+}
+
+
+.text_boton_correcto:hover {
+    color: #fff;
+    width: 100%;
+}
+.text_boton_error:hover {
+    width: 100%;
+    color: #fff;
+}
+.text_boton_pendiente:hover {
+    width: 100%;
+    color: #fff;
 }
 
 button .contenedor_boton_correcto {
