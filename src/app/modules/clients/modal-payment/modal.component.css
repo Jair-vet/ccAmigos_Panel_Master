@@ -74,3 +74,23 @@
 button .contenedor_boton_correcto {
     margin: 0;
 }
+
+.contenedor_imagen_pago {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.imagen_Info {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.imagen_container {
+    width: 200px;
+    height: 200px;
+}
+
+.imagen_info{
+    max-width: 100%;
+}

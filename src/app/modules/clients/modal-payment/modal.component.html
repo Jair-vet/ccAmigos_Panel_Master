@@ -1,7 +1,9 @@
-<h2 mat-dialog-title>Imagen del Pago Realizado</h2>
-<mat-dialog-content>
-  <p>Informacion del Pago de: <span>{{data.nombre}}</span></p>
-  <img [src]="'https://sgp-web.nyc3.cdn.digitaloceanspaces.com/CCAmigos/Clientes/'+data.imageUrl" alt="Imagen del ítem" style="max-width: 100%;">
+<h2 mat-dialog-title class="imagen_Info">Imagen del Pago Realizado</h2>
+<mat-dialog-content class="contenedor_imagen_pago">
+  <p class="imagen_Info">Informacion del Pago de: <span>{{data.nombre}}</span></p>
+  <div class="imagen_container">
+    <img [src]="'https://sgp-web.nyc3.cdn.digitaloceanspaces.com/CCAmigos/Clientes/'+data.imageUrl" alt="Imagen del ítem" class="imagen_info">
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions>
   <div class="contenedor_botones">
