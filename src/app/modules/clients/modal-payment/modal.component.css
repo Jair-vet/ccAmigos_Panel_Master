@@ -30,6 +30,10 @@
     background-color: #269f20c3;
     color: #ffffff;
 }
+.text_boton_correcto{
+    text-transform: uppercase;
+    color: #3eab38;
+}
 .contenedor_boton_pendiente {
     width: 150px;
     height: 40px;
@@ -42,6 +46,10 @@
 .contenedor_boton_pendiente:hover  {
     background-color: #d98f1f;
     color: #ffffff;
+}
+.text_boton_pendiente{
+    text-transform: uppercase;
+    color: #e59f36;
 }
 .contenedor_boton_error {
     width: 150px;
@@ -56,7 +64,10 @@
     background-color: #981212;
     color: #ffffff;
 }
-
+.text_boton_incorrecto{
+    text-transform: uppercase;
+    color: #ab3838;
+}
 .pago_incorrecto {
     background-image: url('../../../../assets/img/1.png');
     background-repeat:no-repeat;

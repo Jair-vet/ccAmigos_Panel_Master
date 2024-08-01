@@ -12,19 +12,19 @@
           class="contenedor_boton_correcto" 
           (click)="changeStatusPay(2, data.id)"
       >
-      <p class="text_boton">Pago Correcto</p>
+      <p class="text_boton_correcto">Pago Correcto</p>
       </button>
       <button  
         class="contenedor_boton_pendiente"
         (click)="changeStatusPay(1, data.id)"
         >
-        <p class="text_boton">Pago Pendiente</p>
+        <p class="text_boton_pendiente">Pago Pendiente</p>
       </button>
       <button 
         class="contenedor_boton_error" 
         (click)="changeStatusPay(3, data.id)"
       >
-        <p class="text_boton">Pago Error</p>
+        <p class="text_boton_error">Pago Error</p>
       </button>
     </div>
   </div>
