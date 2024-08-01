@@ -232,6 +232,14 @@
         </table>
       </div>
     </div>
+    <div class="contenedor_total">
+      <div class="total_registros">
+        <p>Total de registros <span>{{ countClient }}</span></p>
+      </div>
+      <div class="suma_registros">
+        <p>Total Pagos: <span>${{ totalSum }}</span></p>
+      </div>
+    </div>
   </div>
   <div class="card" *ngIf="loading">
     <app-loading></app-loading>

@@ -32,6 +32,8 @@ export class ListClientsComponent {
   id_pago: number = 0;
   modalWidth: string = '100%';
   clients: Client[] = [];
+  countClient: number = 0;  
+  totalSum: number = 0;
   displayedColumns: string[] = ['box', 'name', 'edad', 'iglesia', 'email', 'telefono', 'instrumento', 'fecha_registro', 'ruta_pago', 'acciones', 'status'];
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -303,8 +305,6 @@ export class ListClientsComponent {
     }
   }
 
-
-
   changeStatusClient(status: boolean, client: Client) {
     // console.log(client.id);
     
@@ -360,7 +360,11 @@ export class ListClientsComponent {
     this._clientService.getClientes().subscribe({
       next: (resp) => {
         this.clients = [...resp];
-        // console.log(this.clients);
+        console.log(this.clients);
+        this.countClient = this.clients.length
+        // Contar usuarios con id_pago === 2
+        const totalSuma = this.clients.filter(client => client.id_pago === 2).length;
+        this.totalSum = totalSuma * 300;
         this.dataSource = new MatTableDataSource(this.clients);
       },
       complete: () => {

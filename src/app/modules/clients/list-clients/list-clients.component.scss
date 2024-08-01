@@ -144,3 +144,25 @@
 .table-header {
   text-align: center;
 }
+
+.contenedor_total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.total_registros {
+  margin-top: 20px;
+  text-transform: uppercase;
+  color: blue;
+}
+.total_registros span {
+  color: green;
+}
+.suma_registros {
+  margin-top: 20px;
+  text-transform: uppercase;
+  color: blue;
+}
+.suma_registros span {
+  color: green;
+}

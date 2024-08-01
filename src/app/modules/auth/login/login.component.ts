@@ -24,9 +24,9 @@ export class LoginComponent {
     });
   }
 
-  navigateToRegister() {
-    this._router.navigateByUrl('auth/register');
-  }
+  // navigateToRegister() {
+  //   this._router.navigateByUrl('auth/register');
+  // }
 
   login() {
     this.loading = true;
