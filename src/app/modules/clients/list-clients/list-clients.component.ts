@@ -40,6 +40,21 @@ export class ListClientsComponent {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    this.dataSource.filterPredicate = (data: Client, filter: string) => {
+      switch (filter) {
+        case 'pagado':
+          return data.id_pago === 2;
+        case 'error':
+          return data.id_pago === 3;
+        case 'pendiente':
+          return data.id_pago === 1;
+        default:
+          return true;
+      }
+    };
+
+    this.dataSource.filter = filterValue;
   }
   dataSource!: MatTableDataSource<Client>;
 
@@ -360,7 +375,7 @@ export class ListClientsComponent {
     this._clientService.getClientes().subscribe({
       next: (resp) => {
         this.clients = [...resp];
-        console.log(this.clients);
+        // console.log(this.clients);
         this.countClient = this.clients.length
         // Contar usuarios con id_pago === 2
         const totalSuma = this.clients.filter(client => client.id_pago === 2).length;

@@ -166,36 +166,17 @@
             </td>
           </ng-container>
           <!-- Acciones -->
-          <ng-container  matColumnDef="acciones">
-            <th
-              mat-header-cell
-              class="primary text_center"
-              *matHeaderCellDef
-              mat-sort-header="acciones"
-            >
-              Estatus Pago
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell class="primary text_center" *matHeaderCellDef mat-sort-header="acciones">
+              <div>
+                Estatus Pago
+              </div>
             </th>
             <td *matCellDef="let item" style="width: 30%">
-              <!-- Botones estado del Pago -->
               <div class="buttons_pay">
-                <button
-                  *ngIf="item.id_pago == 1" 
-                  class="pago_pendiente" 
-                  matTooltip="Pago Pendiente"
-                >
-                </button>
-                <button 
-                  *ngIf="item.id_pago == 2" 
-                  class="pago_correcto"  
-                  matTooltip="Pago Correcto"
-                >
-                </button>
-                <button 
-                  *ngIf="item.id_pago == 3" 
-                  class="pago_incorrecto"
-                  matTooltip="Pago Incorrecto" 
-                >
-                </button>
+                <button *ngIf="item.id_pago == 1" class="pago_pendiente" matTooltip="Pago Pendiente"></button>
+                <button *ngIf="item.id_pago == 2" class="pago_correcto" matTooltip="Pago Correcto"></button>
+                <button *ngIf="item.id_pago == 3" class="pago_incorrecto" matTooltip="Pago Incorrecto"></button>
               </div>
             </td>
           </ng-container>
@@ -245,3 +226,4 @@
     <app-loading></app-loading>
   </div>
 </div>
+
