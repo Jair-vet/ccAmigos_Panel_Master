@@ -37,25 +37,51 @@ export class ListClientsComponent {
   displayedColumns: string[] = ['box', 'name', 'edad', 'iglesia', 'email', 'telefono', 'instrumento', 'fecha_registro', 'ruta_pago', 'acciones', 'status'];
   @ViewChild(MatSort) sort!: MatSort;
 
+//   applyFilter(event: Event) {
+//     const filterValue = (event.target as HTMLInputElement).value;
+//     this.dataSource.filter = filterValue.trim().toLowerCase();
+// 
+//     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+//     this.dataSource.filterPredicate = (data: Client, filter: string) => {
+//       switch (filter) {
+//         case 'pagado':
+//           return data.id_pago === 2;
+//         case 'error':
+//           return data.id_pago === 3;
+//         case 'pendiente':
+//           return data.id_pago === 1;
+//         default:
+//           return true;
+//       }
+//     };
+// 
+//     this.dataSource.filter = filterValue;
+//   }
+
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
 
-    this.dataSource.filterPredicate = (data: Client, filter: string) => {
-      switch (filter) {
-        case 'pagado':
-          return data.id_pago === 2;
-        case 'error':
-          return data.id_pago === 3;
-        case 'pendiente':
-          return data.id_pago === 1;
-        default:
-          return true;
-      }
+  this.dataSource.filterPredicate = (data: Client, filter: string) => {
+    // Custom filter logic for payment statuses
+    if (filter === 'pagado') {
+      return data.id_pago === 2;
+    } else if (filter === 'error') {
+      return data.id_pago === 3;
+    } else if (filter === 'pendiente') {
+      return data.id_pago === 1;
+    }
+
+    // Default filter logic for all fields
+    const accumulator = (currentTerm: string, key: string) => {
+      return currentTerm + data[key as keyof Client];
     };
+    const dataStr = Object.keys(data).reduce(accumulator, '').toLowerCase();
+    return dataStr.includes(filter);
+  };
 
-    this.dataSource.filter = filterValue;
-  }
+  this.dataSource.filter = filterValue;
+}
+
   dataSource!: MatTableDataSource<Client>;
 
   isAllSelected = false;

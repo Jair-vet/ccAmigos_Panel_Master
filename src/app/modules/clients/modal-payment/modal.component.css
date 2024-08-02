@@ -6,6 +6,7 @@
     gap: 3;
     justify-content: center;
     align-items: center;
+    color: #ffffff;
 }
 @media (max-width: 768px) {  
     .botones {
@@ -21,54 +22,57 @@
     width: 150px;
     height: 40px;
     border: 1px solid #3eab38;
+    background-color: #3eab38;;
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
     margin: 5px;
+    color: #ffffff;
 }
 .contenedor_boton_correcto:hover {
     background-color: #269f20c3;
-    color: #ffffff;
 }
 .text_boton_correcto{
     width: 100%;
     text-transform: uppercase;
-    color: #3eab38;
+    color: #fff;
 }
 .contenedor_boton_pendiente {
     width: 150px;
     height: 40px;
     border: 1px solid #e59f36;
+    background-color: #e59f36;;
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
     margin: 5px;
+    color: #ffffff;
 }
 .contenedor_boton_pendiente:hover  {
     background-color: #d98f1f;
-    color: #ffffff;
 }
 .text_boton_pendiente{
     text-transform: uppercase;
-    color: #e59f36;
+    color: #fff;
 }
 .contenedor_boton_error {
     width: 150px;
     height: 40px;
     border: 1px solid #ab3838;
+    background-color: #ab3838;
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
     margin: 5px;
+    color: #ffffff;
 }
 .contenedor_boton_error:hover  {
     background-color: #981212;
-    color: #ffffff;
 }
 .text_boton_error{
     width: 100%;
     text-transform: uppercase;
-    color: #ab3838;
+    color: #fff;
 }
 .pago_incorrecto {
     background-image: url('../../../../assets/img/1.png');
@@ -114,8 +118,8 @@ button .contenedor_boton_correcto {
 }
 
 .imagen_container {
-    width: 200px;
-    height: 200px;
+    width: 400px;
+    height: 300px;
 }
 
 .imagen_info{
