@@ -48,7 +48,7 @@ export class ModalComponentRegister implements OnInit {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      projectId: [{ value: '', disabled: true }, Validators.required], // Default disabled
+      id_project: ['', Validators.required], // Default disabled
     });
   }
 
@@ -69,11 +69,11 @@ export class ModalComponentRegister implements OnInit {
     }
 
     this.loading = true;
-    const { name, email, password, eventId } = this.form.value;
-    console.log(name, email, password, eventId);
+    const { name, email, password, id_project } = this.form.value;
+    console.log(name, email, password, id_project);
   
 
-    this._authService.register(name, email, password, eventId).subscribe({
+    this._authService.register(name, email, password, id_project).subscribe({
       next: () => {
         Swal.fire({
           title: 'EXITOSO',
@@ -127,7 +127,7 @@ export class ModalComponentRegister implements OnInit {
       next: (resp) => {
         if (Array.isArray(resp)) {
           this.events = [...resp];
-          console.log(this.events);
+          // console.log(this.events);
           
           this.dataSourceEvent.data = this.events;
           this.dataSourceEvent.sort = this.sort; // Configura el sort después de inicializar dataSource

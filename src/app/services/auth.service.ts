@@ -57,14 +57,23 @@ export class AuthService {
     );
   }
 
-  // http://localhost:4002/api/users
-  // http://localhost:4002/api/auth/register
-  register(name: string, email: string, password: string, projectId: number){
+//   register(name: string, email: string, password: string, id_project: number): Observable<any> {
+//     const url = `${base_url}/auth/register`;
+//     const body = {
+//       name,
+//       email,
+//       password,
+//       id_project,  // Incluye el id_project en el cuerpo de la solicitud
+//     };
+// 
+//     return this.http.post<any>(url, body);
+//   }
+  register(name: string, email: string, password: string, id_proyect: number){
     const url = `${base_url}/auth/register`;
     return this.http
       .post(
         url,
-        { name, email, password, projectId },
+        { name, email, password, id_proyect },
         this.headers
       )
       .pipe(map((resp: any) => resp.message));

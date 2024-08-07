@@ -65,7 +65,7 @@ export class LayoutComponent {
         }
       });
     this.user = this._authService.user;
-    console.log(this._authService.user);
+    // console.log(this._authService.user);
   }
   changeRoute(route: string) {
     this._router.navigateByUrl(route);
@@ -75,20 +75,15 @@ export class LayoutComponent {
     this._router.navigateByUrl('auth/register');
   }
 
-  openModalRegister(/* cliente: Client */) {
-    // console.log(cliente);
+  openModalRegister() {
     
     const dialogRef = this.dialog.open(ModalComponentRegister, {
       width: '700px',  // Ancho del modal
       height: '550px',  // Alto del modal
-      // data: { 
-      //   imageUrl:  cliente.ruta_pago,
-      //   nombre: cliente.nombre,
-      //   id: cliente.id
-      // }
     });
   
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
       console.log('El modal fue cerrado');
     });
   }
@@ -98,9 +93,6 @@ export class LayoutComponent {
   ngOnInit(): void {
     const userRole = this._authService.user.id_rol;
     this.isAdmin = userRole === 1;
-
-    console.log(this.isAdmin);
-    console.log(userRole);
     
   }
   
