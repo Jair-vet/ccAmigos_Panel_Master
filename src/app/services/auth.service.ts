@@ -12,6 +12,8 @@ const base_url = environment.base_url;
 })
 export class AuthService {
   public user!: User;
+  private role: number | null = null;
+  
   constructor(private http: HttpClient) {}
   get token(): string {
     return localStorage.getItem('token') || '';
@@ -32,32 +34,11 @@ export class AuthService {
   validateToken(): Observable<boolean> {
     const token = localStorage.getItem('token') || '';
     return this.http
-      .get(`${base_url}/auth/renew`, {
-        headers: {
-          'x-token': token,
-        },
-      })
+      .get(`${base_url}/auth/renew`, { headers: { 'x-token': token }})
       .pipe(
         map((resp: any) => {
-          // console.log(resp);
-          const {
-            id,
-            name,
-            email,
-            id_rol
-          } = resp.data;
-          // console.log(
-          //   id,
-          //   name,
-          //   email,
-          //   id_rol
-          // );
-          this.user = new User(
-            id,
-            name,
-            email,
-            id_rol
-          );
+          const { id, name, email, id_rol, projectId } = resp.data;
+          this.user = new User( id, name, email, id_rol, projectId );
           localStorage.setItem('token', resp.token);
           return true;
         }),
@@ -78,13 +59,21 @@ export class AuthService {
 
   // http://localhost:4002/api/users
   // http://localhost:4002/api/auth/register
-  register(name: string, email: string, password: string){
+  register(name: string, email: string, password: string, projectId: number){
     const url = `${base_url}/auth/register`;
-    return this.http.post(url, { name, email, password },
+    return this.http
+      .post(
+        url,
+        { name, email, password, projectId },
         this.headers
-      ).pipe(map((resp: any) => resp.message));
+      )
+      .pipe(map((resp: any) => resp.message));
   }
-
+  
+  isAdmin(): boolean {
+    return this.role === 1;
+  }
+  
   logout() {
     localStorage.removeItem('token');
   }

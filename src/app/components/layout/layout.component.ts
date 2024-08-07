@@ -10,6 +10,8 @@ import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
+import { Client } from 'src/app/models/client.model';
+import { ModalComponentRegister } from 'src/app/modules/clients/modal-register/modal.component';
 
 @Component({
   selector: 'app-layout',
@@ -20,6 +22,8 @@ import { User } from 'src/app/models/user.model';
 })
 export class LayoutComponent {
   user!: User;
+  isAdmin: boolean = false;
+  isAdminNumber = 0;
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -29,7 +33,7 @@ export class LayoutComponent {
   modalWidth: string = '100%';
   constructor(
     private _router: Router,
-    private _dialog: MatDialog,
+    public dialog: MatDialog,
     private breakpointObserver: BreakpointObserver,
     private _authService: AuthService
   ) {
@@ -61,7 +65,7 @@ export class LayoutComponent {
         }
       });
     this.user = this._authService.user;
-    // console.log(this._authService.user);
+    console.log(this._authService.user);
   }
   changeRoute(route: string) {
     this._router.navigateByUrl(route);
@@ -69,6 +73,35 @@ export class LayoutComponent {
   
   navigateToRegister() {
     this._router.navigateByUrl('auth/register');
+  }
+
+  openModalRegister(/* cliente: Client */) {
+    // console.log(cliente);
+    
+    const dialogRef = this.dialog.open(ModalComponentRegister, {
+      width: '700px',  // Ancho del modal
+      height: '550px',  // Alto del modal
+      // data: { 
+      //   imageUrl:  cliente.ruta_pago,
+      //   nombre: cliente.nombre,
+      //   id: cliente.id
+      // }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('El modal fue cerrado');
+    });
+  }
+
+  
+  
+  ngOnInit(): void {
+    const userRole = this._authService.user.id_rol;
+    this.isAdmin = userRole === 1;
+
+    console.log(this.isAdmin);
+    console.log(userRole);
+    
   }
   
   logout() {

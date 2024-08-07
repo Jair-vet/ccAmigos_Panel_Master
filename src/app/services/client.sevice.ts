@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Client } from '../models/client.model';
+import { Events } from '../models/event.model';
+import { Observable } from 'rxjs';
 
 const base_url = environment.base_url;
 
@@ -12,19 +14,18 @@ const base_url = environment.base_url;
 export class ClientService {
   showModal = false;
   constructor(private http: HttpClient) {}
-//   get token(): string {
-//     return (
-//       //   localStorage.getItem('token') ||
-//       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoxLCJpYXQiOjE3MTA0NTMyMDd9.akChWRH5CDdeNZYwOj_F_EOxBIhrcqHPXxlLsvEDXEA'
-//     );
-//   }
+  get token(): string {
+    return (
+      localStorage.getItem('token') || ''
+    );
+  }
   get path(): string {
     return 'register';
   }
   get headers() {
     return {
       headers: {
-        // 'x-token': this.token,
+        'x-token': this.token,
       },
     };
   }
@@ -53,6 +54,20 @@ export class ClientService {
     return this.http
       .put(url, { ids })
       .pipe(map((resp: any) => resp.message));
+  }
+
+  getAllEvents(): Observable<Events[]> {
+    const url = `${base_url}/event/all`;
+    return this.http.get<{ ok: boolean; message: string; data: Events[] }>(url, this.headers).pipe(
+      map((resp) => {
+        if (Array.isArray(resp.data)) {
+          return resp.data;
+        } else {
+          console.error('La respuesta no contiene un array de eventos:', resp);
+          return [];
+        }
+      })
+    );
   }
 
   getClientes() {

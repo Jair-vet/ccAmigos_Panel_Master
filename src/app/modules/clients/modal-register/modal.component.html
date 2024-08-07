@@ -3,7 +3,7 @@
     <div class="screen" *ngIf="!loading">
       <div class="screen__content">
         <img src="https://res.cloudinary.com/dytlbyofu/image/upload/v1722354689/Trabajo/logo-amigos_avegun.png" class="logo"
-          width="100px" alt="" />
+          width="70px" alt="" />
 
         <form class="login" [formGroup]="form">
           
@@ -47,12 +47,14 @@
             </mat-error>
           </mat-form-field>
 
-          <!-- Campo Project ID -->
-          <mat-form-field *ngIf="isAdmin" class="login__field" appearance="outline" floatLabel="always">
-            <mat-label>ID del Proyecto</mat-label>
-            <input matInput formControlName="projectId" />
-            <mat-error *ngIf="form.get('projectId')?.invalid && form.get('projectId')?.touched">
-              El ID del proyecto es obligatorio.
+          <!-- Select de Eventos -->
+          <mat-form-field class="login__field" appearance="outline" floatLabel="always">
+            <mat-label>Evento</mat-label>
+            <mat-select formControlName="eventId">
+              <mat-option *ngFor="let evento of events" [value]="evento.id">{{ evento.nombre_proyecto }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('eventId')?.invalid && form.get('eventId')?.touched">
+              Selecciona un evento.
             </mat-error>
           </mat-form-field>
 
@@ -60,15 +62,6 @@
             <span class="button__text">Registrarse</span>
           </button>
 
-          <div class="botones_registro">
-            <button (click)="navigateToLogin()">
-              <span class="button_text">Login</span>
-            </button>
-  
-            <button *ngIf="isLoggedIn()" (click)="navigateToAdminClients()">
-              <span class="button_text">Regresar Tabla</span>
-            </button>
-          </div>
         </form>
       </div>
     </div>

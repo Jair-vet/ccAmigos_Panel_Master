@@ -1,12 +1,7 @@
-import { Song } from './song.model';
 
-export class EventApp {
+export class Events {
   constructor(
     public id: number,
-    public name: string,
-    public date: string,
-    public address: string,
-    public id_status: boolean,
-    public songs: Song[]
+    public nombre_proyecto: string,
   ) {}
 }

@@ -14,7 +14,7 @@ class PermissionsService {
     return this._authService.validateToken().pipe(
       tap((isAuth) => {
         console.log(isAuth);
-        if (!isAuth) {
+        if (!isAuth ) {
           this._router.navigateByUrl('auth/login');
         }
       })
