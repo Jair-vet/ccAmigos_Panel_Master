@@ -14,6 +14,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -34,6 +35,7 @@ export class ListClientsComponent {
   modalWidth: string = '100%';
   clients: Client[] = [];
   countClient: number = 0;  
+  url = environment.base_url
   totalSum: number = 0;
   displayedColumns: string[] = ['box', 'name', 'edad', 'iglesia', 'email', 'telefono', 'instrumento', 'fecha_registro', 'ruta_pago', 'acciones', 'status'];
   @ViewChild(MatSort) sort!: MatSort;
@@ -200,7 +202,7 @@ export class ListClientsComponent {
       }).then((result) => {
         if (result.isConfirmed) {
           this.spinner.show();  // Mostrar el spinner
-          this.http.put('http://localhost:4002/api/register/estatus/pay/clientAll', { ids: ids })
+          this.http.put(`${this.url}/api/register/estatus/pay/clientAll`, { ids: ids })
           .subscribe(response => {
             this.spinner.hide();  // Ocultar el spinner
             Swal.fire(
@@ -248,7 +250,7 @@ export class ListClientsComponent {
       }).then((result) => {
         if (result.isConfirmed) {
           this.spinner.show();
-          this.http.put('http://localhost:4002/api/register/estatus/delete/all', { ids: ids })
+          this.http.put(`${this.url}/register/estatus/delete/all`, { ids: ids })
             .subscribe(response => {
               this.spinner.hide();
               Swal.fire(
